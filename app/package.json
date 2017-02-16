@@ -1,0 +1,16 @@
+{
+  "name": "twitch-comment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uzimith/twitch-comment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uzimith/twitch-comment/issues"
+  },
+  "homepage": "https://github.com/uzimith/twitch-comment#readme"
+}

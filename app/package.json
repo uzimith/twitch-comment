@@ -2,7 +2,7 @@
   "name": "twitch-comment",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uzimith/twitch-comment.git"

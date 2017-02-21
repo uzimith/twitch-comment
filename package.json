@@ -9,6 +9,7 @@
     "babel-preset-react": "^6.23.0",
     "babel-register": "^6.23.0",
     "electron": "^1.4.15",
+    "electron-connect": "^0.6.1",
     "electron-packager": "^8.5.1",
     "react": "^15.4.2",
     "react-desktop": "^0.2.17",
@@ -17,12 +18,13 @@
     "react-router": "^3.0.2",
     "react-router-redux": "^4.0.8",
     "redux": "^3.6.0",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
   },
   "scripts": {
     "start": "electron ./app",
+    "webpack": "webpack",
     "build": "node build.js",
-    "webpack": "webpack"
+    "watch": "node watch.js"
   },
   "repository": {
     "type": "git",

@@ -1,7 +1,9 @@
 'use strict'
 
 const webpack = require('webpack')
-const conf = require('./webpack.config.js')
+const conf = require('./webpack.config.js')({
+    debug: true
+})
 
 const compiler = webpack(conf)
 

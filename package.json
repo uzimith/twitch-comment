@@ -23,7 +23,8 @@
   "scripts": {
     "start": "electron ./app",
     "webpack": "webpack",
-    "build": "node build.js",
+    "debug": "webpack --env.debug; electron ./app",
+    "build": "webpack; node build.js",
     "watch": "node watch.js"
   },
   "repository": {

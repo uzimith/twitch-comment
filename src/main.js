@@ -18,14 +18,15 @@ app.on('ready', () => {
             resizable: false,
             transparent: true,
             frame: false,
+            'always-on-top': true
         });
         mainWindow.webContents.openDevTools();
     } else {
         mainWindow = new BrowserWindow({
             width: 600,
             height: 400,
-            resizable: false
-            });
+            resizable: false,
+        });
     }
     mainWindow.loadURL('file://' + __dirname + '/index.html');
     mainWindow.on('closed', () => {

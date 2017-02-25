@@ -1,5 +1,6 @@
 dist
 app/*.js
+app/style.css
 .awcache
 *.css.d.ts
 

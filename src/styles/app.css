@@ -1,12 +1,26 @@
-:global(html), :global(body) {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-:global(body) {
-  -webkit-app-region: drag;
-  -webkit-user-select: none;
-  background-color:rgba(0,0,0,0.5);
-  color: #ddd;
+:global {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.5);
+    color: #ddd;
+  }
+  
+  #app {
+    width: 100%;
+    height: 100%;
+    -webkit-app-region: drag;
+    padding: 20px;
+  }
 }

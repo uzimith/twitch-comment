@@ -5,6 +5,7 @@ let webpack = require('webpack');
 
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let WebpackNotifierPlugin = require('webpack-notifier');
+let ElectronConnectWebpackPlugin = require('electron-connect-webpack-plugin');
 
 module.exports = function(env = {}) {
     return {
@@ -26,7 +27,7 @@ module.exports = function(env = {}) {
                     exclude: ['node_modules', 'app'],
                     loader: ExtractTextPlugin.extract({
                         fallback:  'style-loader',
-                        use:  ['css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]']
+                        use:  ['css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]', 'postcss-loader']
                     })
                 }
             ]
@@ -42,7 +43,8 @@ module.exports = function(env = {}) {
             new ExtractTextPlugin({
                 filename: 'style.css',
                 allChunks: true
-            })
+            }),
+            env.watch ? new ElectronConnectWebpackPlugin({path: 'app'}) : null
         ]
     }; 
 }; 

@@ -2,7 +2,8 @@
   "extends": "tslint:latest",
   "rules": {
     "no-console": false,
-    "ordered-imports": false
+    "ordered-imports": false,
+    "interface-name": false
   },
   "jsRules": {
   },

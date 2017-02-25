@@ -6,22 +6,25 @@ import intent from "../intents/main";
 import model from "../models/main";
 import view from "../views/main";
 
-export interface ISources {
+export interface Sources {
     DOM: DOMSource;
 }
 
-export interface IIntents {
-  name$: Observable<string>;
+export interface Actions {
+  changeWeight$: Observable<number>;
+  changeHeight$: Observable<number>;
 }
 
-export interface IStates {
-  message$: Observable<string>;
-}
+export type States = Observable<{
+    height: number;
+    weight: number;
+    bmi: number;
+}>;
 
-export interface ISinks {
+export interface Sinks {
     DOM: Observable<VNode>;
 }
 
-export default function main(sources: ISources): ISinks {
+export default function main(sources: Sources): Sinks {
     return view(model(intent(sources)));
 }

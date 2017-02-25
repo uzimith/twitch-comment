@@ -8,6 +8,17 @@ let WebpackNotifierPlugin = require('webpack-notifier');
 let ElectronConnectWebpackPlugin = require('electron-connect-webpack-plugin');
 
 module.exports = function(env = {}) {
+    const plugins = [
+        new webpack.DefinePlugin({ 'global.GENTLY': false }), // support @cycle/http
+        new WebpackNotifierPlugin(),
+        new ExtractTextPlugin({
+            filename: 'style.css',
+            allChunks: true
+        })
+    ];
+    if (env.watch) {
+        plugins.push(new ElectronConnectWebpackPlugin({path: 'app'}));
+    }
     return {
         target: 'electron',
         node: {
@@ -37,14 +48,6 @@ module.exports = function(env = {}) {
             filename: '[name].js'
         },
         devtool: env.debug ? '#eval' : false,
-        plugins: [
-            new webpack.DefinePlugin({ 'global.GENTLY': false }), // support @cycle/http
-            new WebpackNotifierPlugin(),
-            new ExtractTextPlugin({
-                filename: 'style.css',
-                allChunks: true
-            }),
-            env.watch ? new ElectronConnectWebpackPlugin({path: 'app'}) : null
-        ]
+        plugins: plugins
     }; 
 }; 

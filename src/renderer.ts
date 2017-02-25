@@ -1,25 +1,19 @@
 import Cycle from "@cycle/rxjs-run";
 import {Observable} from "rxjs/Rx";
-import {p, makeDOMDriver, VNode} from "@cycle/dom";
 import * as app_styles from "./styles/app.css";
-import * as styles from "./styles/counter.css";
-import {ISinks, ISources} from "./definitions";
+import {makeDOMDriver} from "@cycle/dom";
 
 app_styles;
 
-function main(sources: ISources): ISinks {
-    const changeWeight$ = sources.DOM.select(".weight")
-    .events("input")
-    .map((ev) => (ev.target as HTMLInputElement).value);
+import {ISinks, ISources} from "./definitions";
+import intent from "./intents/main";
+import model from "./models/main";
+import view from "./views/main";
 
-    const changeHeight$ = sources.DOM.select(".height")
-    .events("input")
-    .map((ev) => (ev.target as HTMLInputElement).value);
-
-    return {
-        DOM: Observable.of(p("Hello, world.")),
-    };
+export default function main(sources: ISources): ISinks {
+    return view(model(intent(sources)));
 }
+
 
 Cycle.run(main, {
     DOM: makeDOMDriver("#app"),

@@ -20,7 +20,7 @@ module.exports = function(env = {}) {
         },
         module: {
             loaders: [
-                { test: /\.tsx?$/, exclude: ['node_modules', 'app'], loader: ['ts-loader'] },
+                { test: /\.tsx?$/, exclude: ['node_modules', 'app'], loader: ['awesome-typescript-loader'] },
                 { test: /\.jsx?$/, exclude: ['node_modules', 'app'], loader: ['babel-loader'] },
                 {
                     test: /\.css$/,

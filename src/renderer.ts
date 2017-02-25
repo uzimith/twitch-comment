@@ -1,19 +1,11 @@
 import Cycle from "@cycle/rxjs-run";
 import {Observable} from "rxjs/Rx";
 import {p, makeDOMDriver, VNode} from "@cycle/dom";
-import {DOMSource} from "@cycle/dom/rxjs-typings";
 import * as app_styles from "./styles/app.css";
 import * as styles from "./styles/counter.css";
+import {ISinks, ISources} from "./definitions";
 
 app_styles;
-
-export interface ISources {
-    DOM: DOMSource;
-}
-
-export interface ISinks {
-    DOM: Observable<VNode>;
-}
 
 function main(sources: ISources): ISinks {
     const changeWeight$ = sources.DOM.select(".weight")

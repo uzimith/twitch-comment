@@ -8,12 +8,25 @@ app.on('window-all-closed', () => {
     }
 });
 
+const DEBUG = true;
+
 app.on('ready', () => {
-    mainWindow = new BrowserWindow({
-        width: 600,
-        height: 400,
-        resizable: false
+    if(DEBUG) {
+        mainWindow = new BrowserWindow({
+            width: 600,
+            height: 400,
+            resizable: false,
+            transparent: true,
+            frame: false,
         });
+        mainWindow.webContents.openDevTools();
+    } else {
+        mainWindow = new BrowserWindow({
+            width: 600,
+            height: 400,
+            resizable: false
+            });
+    }
     mainWindow.loadURL('file://' + __dirname + '/index.html');
     mainWindow.on('closed', () => {
         mainWindow = null;

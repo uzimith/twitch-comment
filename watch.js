@@ -1,41 +1,43 @@
-'use strict'
+'use strict';
 
-const webpack = require('webpack')
+const webpack = require('webpack');
 const conf = require('./webpack.config.js')({
     debug: true
-})
+});
+const compiler = webpack(conf);
 
-const compiler = webpack(conf)
-
-let electron = null
+let electron = null;
 
 compiler.watch({}, (err, stats) => {
     if (err) {
-        console.dir(err)
-        return
+        console.error(err.stack || err);
+        if (err.details) {
+            console.error(err.details);
+        }
+        return;
     }
 
     if (stats.hasWarnings()) {
-        stats.compilation.warnings.forEach(warning => {
-            console.dir(warning)
-        })
+        stats.compilation.warnings.forEach((warning) => {
+            console.log(warning);
+        });
     }
-
     if (stats.hasErrors()) {
-        stats.compilation.errors.forEach(error => {
-            console.log(error.error.toString())
-            if (error.error.codeFrame) {
-                console.log(error.error.codeFrame)
+        stats.compilation.errors.forEach((error) => {
+            if(error.error && error.error.codeFrame) {
+                console.log(error.error.codeFrame);
+            } else {
+                console.log(error);
             }
-        })
-        return
+        });
+        return;
     }
 
     if (!electron) {
-        electron = require('electron-connect').server.create({ path: 'app' })
-        electron.start()
-        electron.on('quit', () => process.exit(0))
+        electron = require('electron-connect').server.create({ path: 'app' });
+        electron.start();
+        electron.on('quit', () => process.exit(0));
     } else {
-        electron.restart()
+        electron.restart();
     }
-})
+});

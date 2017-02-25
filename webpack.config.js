@@ -16,7 +16,7 @@ module.exports = function(env = {}) {
             allChunks: true
         })
     ];
-    if (env.watch) {
+    if (env.electron) {
         plugins.push(new ElectronConnectWebpackPlugin({path: 'app'}));
     }
     return {
@@ -28,6 +28,9 @@ module.exports = function(env = {}) {
         entry: {
             main: './src/main.js',
             renderer: './src/renderer.ts'
+        },
+        resolve: {
+            extensions: ['*', '.js', '.ts']
         },
         module: {
             loaders: [

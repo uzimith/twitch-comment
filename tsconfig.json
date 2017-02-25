@@ -19,8 +19,11 @@
     "indentSize": 4,
     "tabSize": 4
   },
-  "files": [
-    "src/renderer.ts"
+  "exclude": [
+    "node_modules",
+    "dist",
+    "app",
+    "typings"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useBabel": true,

@@ -36,12 +36,14 @@
   "scripts": {
     "start": "electron ./app",
     "build": "npm-run-all build:tcm build:webpack build:electron",
-    "watch": "npm-run-all -p watch:*",
+    "watch": "npm-run-all -p watch:webpack watch:tcm",
+    "livereload": "npm-run-all -p watch:electron watch:tcm",
     "start:debug": "webpack --env.debug",
     "build:webpack": "webpack",
     "build:electron": "node build.js",
     "build:tcm": "tcm src",
-    "watch:webpack": "webpack --watch --env.watch --env.debug",
+    "watch:webpack": "webpack --watch --env.debug",
+    "watch:electron": "webpack --watch --env.electron --env.debug",
     "watch:tcm": "tcm src -w"
   },
   "repository": {

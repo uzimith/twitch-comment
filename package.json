@@ -41,7 +41,7 @@
     "build:webpack": "webpack",
     "build:electron": "node build.js",
     "build:tcm": "tcm src",
-    "watch:webpack": "webpack --watch --env.watch",
+    "watch:webpack": "webpack --watch --env.watch --env.debug",
     "watch:tcm": "tcm src -w"
   },
   "repository": {

@@ -7,7 +7,7 @@ export default function view(states$: States, props: Props, vnodes$: Observable<
     .map(([states, vnodes]) => (
         div([
             vnodes.heightSlider,
-            vnodes.WeightSlider,
+            vnodes.weightSlider,
             h2("BMI is " + states.bmi),
         ])
     ));

@@ -19,10 +19,9 @@ export interface Sources {
     props: Props;
 }
 
-export type Actions = Observable<{
-    type: string;
-    payload: {[name: string]: {}};
-}>;
+export interface Actions {
+    slide$: Observable<number>;
+}
 
 export type States = Observable<{
     value: number;
@@ -30,7 +29,7 @@ export type States = Observable<{
 
 export interface Sinks {
     DOM: Observable<VNode>;
-    states$: States;
+    value: Observable<number>;
 }
 
 export default function Slider(sources: Sources): Sinks {

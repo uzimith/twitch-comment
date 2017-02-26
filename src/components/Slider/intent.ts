@@ -4,10 +4,7 @@ import {VNode} from "@cycle/dom";
 import {Props, Actions} from ".";
 
 export default function intent(dom$: DOMSource, props$: Props): Actions {
-    return dom$.events("input").map((ev) => ({
-        type: "slide",
-        payload: {
-            value: (ev.target as HTMLInputElement).value,
-        },
-    }));
+    return {
+        slide$: dom$.select("input[type=range]").events("input").map((ev) => (ev.target as HTMLInputElement).value),
+    };
 }

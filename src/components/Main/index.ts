@@ -42,8 +42,8 @@ export default function Main(sources: Sources): Sinks {
     });
 
     const componentsActions$ = {
-        changeHeight$: HeightSlider.states$,
-        changeWeight$: WeightSlider.tates$
+        changeHeight$: HeightSlider.value,
+        changeWeight$: WeightSlider.value,
     };
 
     const mainActions$ = intent(sources.DOM, sources.props);

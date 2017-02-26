@@ -11,6 +11,6 @@ export default function view(states$: States, props: Props): Sinks {
     ));
     return {
         DOM: vdom$,
-        states$,
+        value: states$.map((states) => states.value),
     };
 }

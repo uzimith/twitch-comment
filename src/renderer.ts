@@ -1,11 +1,11 @@
 import Cycle from "@cycle/rxjs-run";
 import {Observable} from "rxjs/Rx";
-import * as app_styles from "./styles/app.css";
 import {makeDOMDriver} from "@cycle/dom";
-import main from "./components/main";
+import Main from "./components/Main";
+import * as app_styles from "./app.css";
 
 app_styles;
 
-Cycle.run(main, {
+Cycle.run(Main, {
     DOM: makeDOMDriver("#app"),
 });

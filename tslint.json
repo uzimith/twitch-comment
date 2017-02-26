@@ -3,7 +3,9 @@
   "rules": {
     "no-console": false,
     "ordered-imports": false,
-    "interface-name": false
+    "interface-name": false,
+    "no-empty-interface": false,
+    "object-literal-sort-keys": false
   },
   "jsRules": {
   },

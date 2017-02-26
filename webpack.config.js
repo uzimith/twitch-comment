@@ -26,11 +26,11 @@ module.exports = function(env = {}) {
             __filename: false
         },
         entry: {
-            main: './src/main.js',
+            main: './src/mainProcess.js',
             renderer: './src/renderer.ts'
         },
         resolve: {
-            extensions: ['*', '.js', '.ts']
+            extensions: ['*', '.css', '.js', '.ts']
         },
         module: {
             loaders: [

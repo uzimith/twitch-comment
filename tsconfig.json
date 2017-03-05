@@ -2,7 +2,6 @@
   "compilerOptions": {
     "removeComments": false,
     "preserveConstEnums": true,
-    "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "moduleResolution": "node",
@@ -24,10 +23,6 @@
     "dist",
     "app",
     "typings"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "useBabel": true,
-    "useCache": true
-  }
+  ]
 }
 

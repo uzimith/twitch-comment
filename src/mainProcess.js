@@ -1,16 +1,18 @@
-import { app, BrowserWindow } from 'electron';
-
-let mainWindow = null;
-
-app.on('window-all-closed', () => {
-    if (process.platform != 'darwin') {
-        app.quit();
-    }
-});
+import { app, BrowserWindow, globalShortcut } from 'electron';
 
 const DEBUG = true;
+let mainWindow = null;
+let opened = true;
 
 app.on('ready', () => {
+    globalShortcut.register('CommandOrControl+`', () => {
+        if(opened) {
+            mainWindow.hide();
+        } else {
+            mainWindow.show();
+        }
+        opened = !opened;
+    });
     if(DEBUG) {
         mainWindow = new BrowserWindow({
             width: 600,
@@ -18,9 +20,10 @@ app.on('ready', () => {
             resizable: false,
             transparent: true,
             frame: false,
-            'always-on-top': true
+            focusable: false,
+            skipTaskbar: true,
         });
-        mainWindow.webContents.openDevTools();
+        // mainWindow.webContents.openDevTools();
     } else {
         mainWindow = new BrowserWindow({
             width: 600,
@@ -28,8 +31,16 @@ app.on('ready', () => {
             resizable: false,
         });
     }
+    mainWindow.setAlwaysOnTop(true);
+    mainWindow.setSkipTaskbar(true);
     mainWindow.loadURL('file://' + __dirname + '/index.html');
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
+});
+
+app.on('window-all-closed', () => {
+    if (process.platform != 'darwin') {
+        app.quit();
+    }
 });

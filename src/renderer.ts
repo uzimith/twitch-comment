@@ -1,11 +1,28 @@
-import Cycle from "@cycle/rxjs-run";
-import {Observable} from "rxjs/Rx";
+import run from "@cycle/rxjs-run";
 import {makeDOMDriver} from "@cycle/dom";
-import Main from "./components/Main";
-import * as app_styles from "./app.css";
+import {createStore} from "./drivers/stateStore";
+import {List} from "immutable";
+import logger from "./middlewares/logger";
+import main from "./main";
 
-app_styles;
+import EventModule from "snabbdom/modules/eventlisteners";
+import ClassModule from "snabbdom/modules/class";
+import PropsModule from "snabbdom/modules/props";
+import AttrsModule from "snabbdom/modules/attributes";
+import StyleModule from "snabbdom/modules/style";
+import DatasetModule from "snabbdom/modules/dataset";
 
-Cycle.run(Main, {
-    DOM: makeDOMDriver("#app"),
+import Actions from "./actions";
+import Comment from "./models/Comment";
+
+const {makeActionsDriver, makeStatesDriver} = createStore([logger]);
+
+run(main, {
+    DOM: makeDOMDriver("#app", {
+        modules: [EventModule, ClassModule, PropsModule, AttrsModule, StyleModule, DatasetModule],
+    }),
+    actions: makeActionsDriver(new Actions()),
+    states: makeStatesDriver({
+        comments: List.of(),
+    }),
 });

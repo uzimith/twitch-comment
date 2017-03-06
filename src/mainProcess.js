@@ -1,4 +1,14 @@
 import { app, BrowserWindow, globalShortcut } from 'electron';
+import electronOauth2 from 'electron-oauth2';
+
+var config = {
+    clientId: '',
+    clientSecret: '',
+    authorizationUrl: 'https://api.twitch.tv/kraken/oauth2/authorize',
+    tokenUrl: 'https://api.twitch.tv/kraken/oauth2/token',
+    useBasicAuthorizationHeader: false,
+    redirectUri: 'http://localhost'
+};
 
 const DEBUG = true;
 let mainWindow = null;
@@ -13,6 +23,7 @@ app.on('ready', () => {
         }
         opened = !opened;
     });
+
     if(DEBUG) {
         mainWindow = new BrowserWindow({
             width: 600,
@@ -23,7 +34,7 @@ app.on('ready', () => {
             focusable: false,
             skipTaskbar: true,
         });
-        // mainWindow.webContents.openDevTools();
+        mainWindow.webContents.openDevTools();
     } else {
         mainWindow = new BrowserWindow({
             width: 600,
@@ -31,11 +42,26 @@ app.on('ready', () => {
             resizable: false,
         });
     }
+
     mainWindow.setAlwaysOnTop(true);
     mainWindow.setSkipTaskbar(true);
     mainWindow.loadURL('file://' + __dirname + '/index.html');
     mainWindow.on('closed', () => {
         mainWindow = null;
+    });
+
+    const options = {
+        scope: 'chat_login',
+    };
+
+    const oauth = electronOauth2(config, {
+        alwaysOnTop: true,
+        autoHideMenuBar: true,
+    });
+
+    oauth.getAccessToken(options)
+    .then(token => {
+        console.log(token);
     });
 });
 

@@ -1,5 +1,6 @@
 import run from "@cycle/rxjs-run";
 import {makeDOMDriver} from "@cycle/dom";
+import {makeHTTPDriver} from '@cycle/http';
 import {createStore} from "./drivers/stateStore";
 import {List} from "immutable";
 import logger from "./middlewares/logger";
@@ -21,6 +22,7 @@ run(main, {
     DOM: makeDOMDriver("#app", {
         modules: [EventModule, ClassModule, PropsModule, AttrsModule, StyleModule, DatasetModule],
     }),
+    HTTP: makeHTTPDriver(),
     actions: makeActionsDriver(new Actions()),
     states: makeStatesDriver({
         comments: List.of(),

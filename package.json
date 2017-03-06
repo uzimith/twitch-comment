@@ -51,5 +51,8 @@
   "bugs": {
     "url": "https://github.com/uzimith/twitch-comment/issues"
   },
-  "homepage": "https://github.com/uzimith/twitch-comment#readme"
+  "homepage": "https://github.com/uzimith/twitch-comment#readme",
+  "dependencies": {
+    "electron-oauth2": "^2.4.1"
+  }
 }

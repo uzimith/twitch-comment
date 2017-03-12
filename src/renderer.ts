@@ -1,9 +1,10 @@
 import run from "@cycle/rxjs-run";
 import {makeDOMDriver} from "@cycle/dom";
-import {makeHTTPDriver} from '@cycle/http';
+import {makeHTTPDriver} from "@cycle/http";
 import {createStore} from "./drivers/stateStore";
 import {List} from "immutable";
 import logger from "./middlewares/logger";
+import oauth from "./middlewares/oauth";
 import main from "./main";
 
 import EventModule from "snabbdom/modules/eventlisteners";
@@ -16,7 +17,7 @@ import DatasetModule from "snabbdom/modules/dataset";
 import Actions from "./actions";
 import Comment from "./models/Comment";
 
-const {makeActionsDriver, makeStatesDriver} = createStore([logger]);
+const {makeActionsDriver, makeStatesDriver} = createStore([logger, oauth]);
 
 run(main, {
     DOM: makeDOMDriver("#app", {

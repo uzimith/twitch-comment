@@ -26,7 +26,7 @@ module.exports = function(env = {}) {
             __filename: false
         },
         entry: {
-            main: './src/mainProcess.js',
+            main: './src/mainProcess.ts',
             renderer: './src/renderer.ts'
         },
         resolve: {

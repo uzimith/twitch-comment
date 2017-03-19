@@ -38,7 +38,7 @@ module.exports = function(env: Environment = {}) {
             renderer: './src/renderer.tsx'
         },
         resolve: {
-            extensions: ['*', '.css', '.js', '.jsx', '.ts', '.tsx']
+            extensions: ['*', '.tsx', '.ts', '.json', '.jsx', '.js', '.css']
         },
         module: {
             loaders: [

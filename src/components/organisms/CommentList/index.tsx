@@ -9,7 +9,7 @@ export interface Props {
 export const CommentList = (props: Props) => {
     return <ul>
         {props.comments.map(comment =>
-            <li><CommentView {...comment} /></li>)
+            <li key={comment.uuid}><CommentView comment={comment} /></li>)
         }
     </ul>;
 };

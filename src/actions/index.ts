@@ -1,11 +1,10 @@
-import {Subject} from "rxjs/Rx";
+import actionCreatorFactory from 'typescript-fsa';
+import { ResponseError } from '../utils/api';
 
-export default class Actions {
-    public initApp: Subject<any>;
-    public addComment: Subject<any>;
+const actionCreator = actionCreatorFactory();
 
-    constructor() {
-        this.initApp = null;
-        this.addComment = null;
-    }
-}
+// auth
+export const authorize = actionCreator.async<void, {}, ResponseError>('AUTHORIZE');
+
+// comment
+export const addComment = actionCreator('AUTHORIZE');

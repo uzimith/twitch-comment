@@ -1,1 +1,28 @@
-../tsconfig.json
+{
+    "compilerOptions": {
+        "removeComments": false,
+        "preserveConstEnums": true,
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "outDir": "../app/",
+        "jsx": "react",
+        "moduleResolution": "node",
+        "module": "es6",
+        "target": "es6",
+        "lib": [
+            "es5",
+            "es2015.iterable",
+            "es2015.collection",
+            "es2015.promise",
+            "dom"
+        ],
+        "typeRoots": ["./typings"]
+    },
+    "exclude": [
+        "../node_modules",
+        "../dist"
+    ]
+}

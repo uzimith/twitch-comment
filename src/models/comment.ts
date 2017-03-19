@@ -1,18 +1,7 @@
-import {Record} from "immutable";
-
-interface Params {
+export class Comment {
     username: string;
     text: string;
-}
+    time: Date;
+};
 
-export default class Comment extends Record({
-    username: "<user>",
-    text: "<text>",
-}) {
-    public username: string;
-    public text: string;
-
-    constructor(params?: Params) {
-        params ? super(params) : super();
-    }
-}
+export default Comment;

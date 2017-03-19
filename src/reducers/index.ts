@@ -1,19 +1,12 @@
-import {Observable, Subject} from "rxjs/Rx";
-import {Map} from "immutable";
-import Comment from "../models/Comment";
-import Actions from "../actions";
+import { auth, State as AuthState } from './auth';
+import { combineReducers } from 'redux';
 
-export function makeReducer(actions: Actions) {
-    const addComment = actions.addComment
-        .map((comment) => state => {
-            return state
-                .updateIn(["comments"], comments => comments.unshift(comment))
-            ;
-        })
-    ;
+interface RootState {
+    auth: AuthState;
+};
 
-    return Observable.merge(
-        addComment,
-    );
-}
+export const rootReducer = combineReducers<RootState>({
+    auth
+});
 
+export default rootReducer;

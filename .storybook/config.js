@@ -3,7 +3,7 @@ import {
 } from '@kadira/storybook';
 
 function loadStories() {
-    // require('../src/components/stories/index');
+    require('../src/components/stories/index.tsx');
 }
 
 configure(loadStories, module);

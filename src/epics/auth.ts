@@ -2,10 +2,10 @@ import returnof from 'returnof';
 import electronOauth2 from 'electron-oauth2';
 import { Observable } from 'rxjs/Rx';
 import { Epic } from 'redux-observable';
-import { authorize } from '../actions';
-import { State } from '../reducers/auth';
-import { config, options } from '../configs/auth';
-import secret from '../secret';
+import { authorize } from 'actions';
+import { State } from 'reducers/auth';
+import { config, options } from 'configs/auth';
+import secret from 'secret';
 
 const oauth = electronOauth2(config, {
     alwaysOnTop: true,

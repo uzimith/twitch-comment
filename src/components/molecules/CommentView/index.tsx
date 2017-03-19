@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Text from '../../atoms/Text';
-import Comment from '../../../models/comment';
+import Text from 'components/atoms/Text';
+import Comment from 'models/comment';
 
 export interface Props {
     comment: Comment;

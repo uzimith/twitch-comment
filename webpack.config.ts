@@ -6,8 +6,8 @@ declare var module;
 
 const path = require('path');
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const ElectronConnectWebpackPlugin = require('electron-connect-webpack-plugin');
 
@@ -33,12 +33,14 @@ module.exports = function(env: Environment = {}) {
             __dirname: false,
             __filename: false
         },
+        context: path.resolve(__dirname + '/src'),
         entry: {
-            main: './src/process/main.ts',
-            renderer: './src/renderer.tsx',
+            main: './process/main.ts',
+            renderer: './renderer.tsx',
         },
         resolve: {
-            extensions: ['*', '.tsx', '.ts', '.json', '.jsx', '.js', '.css']
+            extensions: ['*', '.tsx', '.ts', '.json', '.jsx', '.js', '.css'],
+            modules: ['src', 'node_modules']
         },
         module: {
             loaders: [

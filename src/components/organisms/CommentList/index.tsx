@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Comment from '../../../models/comment';
-import CommentView from '../../molecules/CommentView';
+import Comment from 'models/comment';
+import CommentView from 'components/molecules/CommentView';
 
 export interface Props {
     comments: Comment[];

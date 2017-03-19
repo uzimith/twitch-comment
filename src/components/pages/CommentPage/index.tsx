@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import CommentList from '../../organisms/CommentList';
-import Comment from '../../../models/comment';
+import CommentList from 'components/organisms/CommentList';
+import Comment from 'models/comment';
 
 export interface Props {
     comment: Comment[];

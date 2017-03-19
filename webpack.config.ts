@@ -35,7 +35,7 @@ module.exports = function(env: Environment = {}) {
         },
         entry: {
             main: './src/process/main.ts',
-            renderer: './src/renderer.tsx'
+            renderer: './src/renderer.tsx',
         },
         resolve: {
             extensions: ['*', '.tsx', '.ts', '.json', '.jsx', '.js', '.css']

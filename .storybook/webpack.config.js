@@ -4,11 +4,10 @@ const include = path.resolve(__dirname, '../');
 
 module.exports = function(config, env) {
     var config = genDefaultConfig(config, env);
+    console.log(__dirname);
 
-    console.log(config.resolve);
-
-    config.resolve.fallback = undefined; // disable node_modules
     config.resolve.extensions = ['.tsx', '.ts', '.js', '.json', '.jsx', ''];
+    config.resolve.root = path.resolve(__dirname, '../src/');
     config.resolve.modules = [
         path.resolve(__dirname, '../src/'),
         path.resolve(__dirname, '../node_modules')
@@ -16,8 +15,14 @@ module.exports = function(config, env) {
     config.module.loaders.unshift({
         test: /\.tsx?$/,
         loader: 'ts-loader',
+        options: {
+            "compilerOptions": {
+                "module": "commonjs",
+            },
+        },
         include
     });
+    console.log(config.module.loaders);
 
     return config;
 };

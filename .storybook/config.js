@@ -1,9 +1,4 @@
-import {
-    configure
-} from '@kadira/storybook';
+import { configure } from "@kadira/storybook";
 
-function loadStories() {
-    require('../src/components/stories/index.tsx');
-}
-
-configure(loadStories, module);
+const req = require.context("../src/", true, /\.story.tsx$/);
+configure(() => req.keys().forEach(req), module);

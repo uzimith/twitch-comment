@@ -4,7 +4,6 @@ const include = path.resolve(__dirname, '../');
 
 module.exports = function(config, env) {
     var config = genDefaultConfig(config, env);
-    console.log(__dirname);
 
     config.resolve.extensions = ['.tsx', '.ts', '.js', '.json', '.jsx', ''];
     config.resolve.root = path.resolve(__dirname, '../src/');
@@ -22,7 +21,5 @@ module.exports = function(config, env) {
         },
         include
     });
-    console.log(config.module.loaders);
-
     return config;
 };

@@ -6,11 +6,10 @@
         "noImplicitReturns": true,
         "noImplicitThis": true,
         "sourceMap": true,
-        "experimentalDecorators": true,
         "outDir": "../dist/",
         "jsx": "react",
         "moduleResolution": "node",
-        "module": "es6",
+        "module": "commonjs",
         "target": "es5",
         "baseUrl": ".",
         "lib": [

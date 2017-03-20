@@ -1,11 +1,11 @@
-import returnof from 'returnof';
+import returnof from 'utils/returnof';
 import { ActionsObservable } from 'redux-observable';
 import { MiddlewareAPI } from 'redux';
 import { Observable } from 'rxjs/Rx';
 import { Epic } from 'redux-observable';
 import { authorize } from 'actions';
 import { State } from 'reducers/auth';
-import electronOauth2 from 'electron-oauth2';
+import * as electronOauth2 from 'electron-oauth2';
 import { config, options } from 'configs/auth';
 import secret from 'secret';
 

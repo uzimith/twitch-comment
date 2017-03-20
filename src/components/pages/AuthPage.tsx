@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Auth from 'components/organisms/Auth';
+import AuthTwitch from 'components/containers/AuthTwitch';
 
 export const AuthPage = () => {
     return <div>
-        <Auth />
+        <AuthTwitch />
     </div>
         ;
 };

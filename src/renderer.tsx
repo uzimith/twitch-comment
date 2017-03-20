@@ -13,7 +13,6 @@ import App from 'components/App';
 const history = createHistory();
 const historyMiddleware = routerMiddleware(history);
 
-// epic
 const epicMiddleware = createEpicMiddleware<any, any>(rootEpic);
 
 // store

@@ -4,8 +4,8 @@ import Token from 'models/token';
 
 const actionCreator = actionCreatorFactory();
 
-// auth
-export const authorize = actionCreator.async<undefined, Token, Error>('AUTHORIZE');
+export const authorizeTwitch = actionCreator.async<undefined, Token, Error>('AUTHORIZE_TWITCH');
 
-// comment
-export const addComment = actionCreator('AUTHORIZE');
+export interface TwitchResponse { };
+export const subsribeTwitch = actionCreator('SUBSCRIBE_TWITCH');
+export const publishTwitch = actionCreator<TwitchResponse>('PUBLISH_TWITCH');

@@ -7,7 +7,11 @@ export interface Props {
 }
 
 export const CommentView = (props: Props) => {
-    return <Text text={props.comment.text} />;
+    return <div>
+        <Text text={props.comment.username} />
+        <Text text={props.comment.text} />
+    </div>
+        ;
 };
 
 export default CommentView;

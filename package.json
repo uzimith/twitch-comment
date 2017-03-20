@@ -4,9 +4,11 @@
     "description": "",
     "main": "app.js",
     "devDependencies": {
+        "@kadira/react-storybook-decorator-centered": "^1.0.0",
         "@kadira/storybook": "^2.35.3",
         "@kadira/storybook-deployer": "^1.2.0",
         "@kadira/storyshots": "^2.1.0",
+        "@types/faker": "^4.1.0",
         "@types/react": "^15.0.16",
         "@types/react-dom": "^0.14.23",
         "@types/react-redux": "^4.4.37",
@@ -21,6 +23,7 @@
         "electron-oauth2": "^2.4.1",
         "electron-packager": "^8.5.2",
         "extract-text-webpack-plugin": "^2.0.0",
+        "faker": "^4.1.0",
         "immutable": "^3.8.1",
         "npm-run-all": "^4.0.2",
         "postcss": "^5.2.15",
@@ -66,8 +69,10 @@
         "storybook": "npm-run-all -p storybook:*",
         "storybook:start": "start-storybook -p 9001",
         "storybook:open": "open http://localhost:9001",
-        "storybook-build": "storybook-to-ghpages",
-        "storyshots": "storyshots"
+        "storyshots": "storyshots",
+        "push": "npm-run-all -p push:*",
+        "push:git": "git push",
+        "push:storybook": "storybook-to-ghpages"
     },
     "repository": {
         "type": "git",

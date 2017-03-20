@@ -3,7 +3,7 @@ import { Epic, combineEpics } from 'redux-observable';
 
 import auth from './auth';
 
-export const rootEpic = combineEpics<Epic<Action<any>, any>>(
+export const rootEpic = combineEpics(
     auth
 );
 

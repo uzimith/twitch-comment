@@ -22,8 +22,8 @@ export const auth = (
     action$.ofType(authorize.started.type)
         .mergeMap(action =>
             Observable.from(oauth.getAccessToken(options))
-                .map(result => authorize.done({ params: action.payload, result }))
-                .catch(error => Observable.of(authorize.failed({ params: action.payload, error })))
+                .map(result => authorize.done({ params: null, result }))
+                .catch(error => Observable.of(authorize.failed({ params: null, error })))
         )
     ;
 

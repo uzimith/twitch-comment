@@ -14,7 +14,7 @@ const history = createHistory();
 const historyMiddleware = routerMiddleware(history);
 
 // epic
-const epicMiddleware = createEpicMiddleware(rootEpic);
+const epicMiddleware = createEpicMiddleware<any, any>(rootEpic);
 
 // store
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

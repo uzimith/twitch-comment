@@ -10,7 +10,7 @@ export interface Params {
 export class Comment extends Record({
     username: '<user>',
     text: '<text>',
-    uuid: '<uuid>'
+    uuid: null
 }) {
     public username: string;
     public text: string;

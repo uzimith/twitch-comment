@@ -34,3 +34,24 @@ declare module 'react-router-redux' {
         };
     }
 }
+
+declare module 'typescript-fsa' {
+    export interface EmptySuccess<S> {
+        result: S;
+    }
+
+    export interface EmptyFailure<E> {
+        error: E;
+    }
+
+    export interface EmptyAsyncActionCreators<S, E> {
+        type: string;
+        started: EmptyActionCreator;
+        done: ActionCreator<EmptySuccess<S>>;
+        failed: ActionCreator<EmptyFailure<E>>;
+    }
+    export interface ActionCreatorFactory {
+        async<undefined, S, E>(type: string, commonMeta?: Object | null): EmptyAsyncActionCreators<S, E>;
+        async<P, S, E>(type: string, commonMeta?: Object | null): AsyncActionCreators<P, S, E>;
+    }
+}

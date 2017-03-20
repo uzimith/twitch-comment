@@ -1,12 +1,12 @@
 import { isType, Action } from 'typescript-fsa';
-import { authorize } from '../actions';
-export interface State {
-    token?: string;
-}
+import { authorize } from 'actions';
+import { Token } from 'models/token';
 
-export const auth = (state: State = {}, action: Action<any>): State => {
+export type State = Token;
+
+export const auth = (state: State = null, action: Action<any>): State => {
     if (isType(action, authorize.done)) {
-        return action.payload;
+        return action.payload.result;
     }
     return state;
 };

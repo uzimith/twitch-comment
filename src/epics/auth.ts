@@ -4,10 +4,11 @@ import { MiddlewareAPI } from 'redux';
 import { Observable } from 'rxjs/Rx';
 import { Epic } from 'redux-observable';
 import { authorize } from 'actions';
-import { State } from 'reducers/auth';
+import { RootState } from 'reducers';
 import * as electronOauth2 from 'electron-oauth2';
 import { config, options } from 'configs/auth';
 import secret from 'secret';
+import { Token } from 'models/token';
 
 const oauth = electronOauth2(config, {
     alwaysOnTop: true,
@@ -17,13 +18,13 @@ const oauth = electronOauth2(config, {
 const actionValue = returnof(authorize.started);
 export const auth = (
     action$: ActionsObservable<typeof actionValue>,
-    store: MiddlewareAPI<State>
+    store: MiddlewareAPI<RootState>
 ) =>
     action$.ofType(authorize.started.type)
         .mergeMap(action =>
             Observable.from(oauth.getAccessToken(options))
-                .map(result => authorize.done({ params: null, result }))
-                .catch(error => Observable.of(authorize.failed({ params: null, error })))
+                .map(result => authorize.done({ result: new Token(result) }))
+                .catch(error => Observable.of(authorize.failed({ error })))
         )
     ;
 

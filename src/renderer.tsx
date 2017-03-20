@@ -5,9 +5,9 @@ import { Provider } from 'react-redux';
 import { createEpicMiddleware } from 'redux-observable';
 import createHistory from 'history/createHashHistory';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
-import { rootEpic } from './epics';
-import { rootReducer } from './reducers';
-import App from './components/App';
+import { rootEpic } from 'epics';
+import { rootReducer } from 'reducers';
+import App from 'components/App';
 
 // history
 const history = createHistory();

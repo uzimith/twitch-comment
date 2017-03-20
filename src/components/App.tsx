@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Route } from 'react-router';
-import * as styles from './App.css';
+import * as styles from 'components/App.css';
 
-import CommentPage from './pages/CommentPage';
+import AuthPage from 'components/pages/AuthPage';
+import CommentPage from 'components/pages/CommentPage';
 
 export const App = () => {
     return <div className={styles.app}>
-        <Route exact path="/" component={CommentPage} />
+        <Route exact path="/" component={AuthPage} />
+        <Route path="/comments" component={CommentPage} />
     </div>
         ;
 };

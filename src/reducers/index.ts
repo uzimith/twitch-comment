@@ -1,12 +1,15 @@
 import { auth, State as AuthState } from './auth';
 import { combineReducers } from 'redux';
+import { routerReducer, RouterState } from 'react-router-redux';
 
-interface RootState {
+export interface RootState {
     auth: AuthState;
+    router: RouterState;
 };
 
 export const rootReducer = combineReducers<RootState>({
-    auth
+    auth,
+    router: routerReducer,
 });
 
 export default rootReducer;

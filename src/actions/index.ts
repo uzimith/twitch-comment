@@ -1,10 +1,11 @@
 import actionCreatorFactory from 'typescript-fsa';
-import { ResponseError } from '../utils/api';
+import { APIResponseError } from '../utils/api';
+import Token from 'models/token';
 
 const actionCreator = actionCreatorFactory();
 
 // auth
-export const authorize = actionCreator.async<void, {}, ResponseError>('AUTHORIZE');
+export const authorize = actionCreator.async<undefined, Token, Error>('AUTHORIZE');
 
 // comment
 export const addComment = actionCreator('AUTHORIZE');

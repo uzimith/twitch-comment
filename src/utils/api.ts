@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Rx';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
-export class ResponseError extends Error {
+export class APIResponseError extends Error {
     public response;
     constructor(response: Response) {
         super(response.statusText);
@@ -13,7 +13,7 @@ function checkStatus(response: Response): Observable<Response> | ErrorObservable
     if (response.status >= 200 && response.status < 300) {
         return Observable.from(response.json());
     } else {
-        return Observable.throw(new ResponseError(response));
+        return Observable.throw(new APIResponseError(response));
     }
 }
 

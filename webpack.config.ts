@@ -28,7 +28,7 @@ module.exports = function(env: Environment = {}) {
         plugins.push(new ElectronConnectWebpackPlugin({ path: 'app' }));
     }
     return {
-        target: 'electron',
+        target: 'electron-renderer',
         node: {
             __dirname: false,
             __filename: false

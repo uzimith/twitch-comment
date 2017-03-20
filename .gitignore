@@ -4,6 +4,8 @@ app/style.css
 .awcache
 *.css.d.ts
 src/secret.ts
+typings/*
+!typings/mytypes.d.ts
 
 ### https://raw.github.com/github/gitignore/ed91cc6c01cb044505585b8aa77d8e017bffece7/Node.gitignore
 
@@ -46,7 +48,6 @@ node_modules/
 jspm_packages/
 
 # Typescript v1 declaration files
-typings/
 
 # Optional npm cache directory
 .npm

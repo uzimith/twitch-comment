@@ -1,7 +1,7 @@
 // tslint:disable:no-var-requires
 declare var __dirname;
-declare var process;
 declare function require(moduleName: string): any;
+declare var process;
 declare var module;
 
 const path = require('path');
@@ -44,7 +44,7 @@ module.exports = function(env: Environment = {}) {
         },
         module: {
             loaders: [
-                { test: /\.tsx?$/, exclude: ['node_modules', 'app'], loader: ['ts-loader'] },
+                { test: /\.tsx?$/, exclude: ['node_modules', 'app'], loader: 'ts-loader' },
                 {
                     test: /\.css$/,
                     exclude: ['node_modules', 'app'],

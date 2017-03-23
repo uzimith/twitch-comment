@@ -7,7 +7,7 @@ export interface Params {
     uuid?: string;
 }
 
-export class Comment extends Record({
+class Comment extends Record({
     username: '<user>',
     text: '<text>',
     uuid: null

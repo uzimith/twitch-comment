@@ -1,6 +1,6 @@
 import { isType, Action } from 'typescript-fsa';
 import { authorizeTwitch } from 'actions';
-import { Token } from 'models/token';
+import Token from 'models/token';
 
 export type State = Token;
 

@@ -55,3 +55,9 @@ declare module 'typescript-fsa' {
         async<P, S, E>(type: string, commonMeta?: Object | null): AsyncActionCreators<P, S, E>;
     }
 }
+
+declare module 'sinon' {
+    export interface SinonStub extends SinonSpy {
+        resolves(obj: any): SinonStub;
+    }
+}

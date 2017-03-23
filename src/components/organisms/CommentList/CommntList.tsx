@@ -4,7 +4,7 @@ import centered from '@kadira/react-storybook-decorator-centered';
 import * as faker from 'faker';
 
 import { CommentList } from 'components/organisms/CommentList';
-import { Comment } from 'models/comment';
+import Comment from 'models/comment';
 
 const comments = [
     new Comment({

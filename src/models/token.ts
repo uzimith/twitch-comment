@@ -8,7 +8,7 @@ export interface Params {
     uuid?: string;
 }
 
-export class Token extends Record({
+class Token extends Record({
     access_token: null,
     refresh_token: null,
     uuid: null,

@@ -1,6 +1,6 @@
 import secret from '../secret';
 
-export const config = {
+export const parameters = {
     clientId: secret.clientId,
     clientSecret: secret.clientSecret,
     authorizationUrl: 'https://api.twitch.tv/kraken/oauth2/authorize',
@@ -8,11 +8,17 @@ export const config = {
     useBasicAuthorizationHeader: false,
     redirectUri: 'http://localhost',
 };
-export const options = {
+
+export const authWindowOptions = {
+    alwaysOnTop: true,
+    autoHideMenuBar: true,
+};
+
+export const twitchScopes = {
     scope: ['chat_login', 'channel_read', 'user_read'],
 };
 
-export const allOptions = {
+export const twitchAllScopes = {
     scope: [
         'user_read',
         'user_blocks_edit ',

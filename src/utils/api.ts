@@ -2,10 +2,16 @@ import { Observable } from 'rxjs/Rx';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
 export class APIResponseError extends Error {
+    public name = 'APIResponseError';
     public response;
+
     constructor(response: Response) {
         super(response.statusText);
         this.response = response;
+    }
+
+    toString() {
+        return this.name + ': ' + this.message;
     }
 }
 

@@ -1,5 +1,5 @@
 import actionCreatorFactory from 'typescript-fsa';
-import { APIResponseError } from '../utils/api';
+import { APIResponseError } from 'utils/api';
 import Token from 'models/token';
 
 const actionCreator = actionCreatorFactory();

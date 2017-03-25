@@ -56,6 +56,7 @@
         "stack-source-map": "^1.0.6",
         "stubbable-decorator": "https://github.com/uzimith/stubbable-decorator.js",
         "style-loader": "^0.13.2",
+        "tmi.js": "^1.1.2",
         "ts-loader": "^2.0.1",
         "ts-node": "^2.1.0",
         "typed-css-modules": "^0.2.0",

@@ -1,5 +1,4 @@
 import { Record } from 'immutable';
-import * as uuid from 'uuid/v4';
 
 export interface Links {
     self?: string;

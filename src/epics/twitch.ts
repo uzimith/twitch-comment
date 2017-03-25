@@ -19,12 +19,8 @@ export const auth = (
 ) =>
     action$.ofType(authorizeTwitch.started.type)
         .mergeMap(action => {
-            console.log(OAuthAuthorize);
             return OAuthAuthorize('twtich')
-                .map(result => {
-                    console.log('result', result);
-                    return authorizeTwitch.done({ result: new Token(result) })
-                })
+                .map(result => authorizeTwitch.done({ result: new Token(result) }))
                 .catch(error => Observable.of(authorizeTwitch.failed({ error })));
         }
         )

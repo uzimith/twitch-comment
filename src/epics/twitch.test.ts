@@ -5,73 +5,69 @@ import { ActionsObservable } from 'redux-observable';
 import configureMockStore from 'redux-mock-store';
 import { RootState } from 'reducers';
 import { authorizeTwitch, subsribeTwitch, publishTwitch } from 'actions';
-import { auth } from 'epics/twitch';
+import { twitchEpic } from 'epics/twitch';
 import { OAuthAuthorize, OAuthAuthorizeError } from 'utils/oauth';
 
 // OAuth
 import Token from 'models/token';
 import { parameters, authWindowOptions, twitchAllScopes } from 'configs/auth';
 
-test.cb('twtichEpic run', t => {
+test('twtichEpic returns authorizeTwitch.done', t => {
     t.plan(1);
+
+    const ts = new TestScheduler((expected, actual) => {
+        t.deepEqual(expected, actual);
+    });
 
     const response = {
         access_token: 'access_token',
         refresh_token: 'refresh_token',
-        scope: ['scope']
+        scope: ['scope'],
+        uuid: 'uuid'
     };
 
     OAuthAuthorize.stub = stub().withArgs('twitch')
         .returns(Observable.of(response));
 
-    const testScheduler = new TestScheduler((expected, actual) => {
-        t.deepEqual(expected, actual);
-        t.end();
-    });
-    const cold = testScheduler.createColdObservable.bind(testScheduler);
     const fetchedToken = new Token(response);
     const values = {
         a: authorizeTwitch.started(),
         b: authorizeTwitch.done({ result: fetchedToken }),
     };
-    const input$ = cold('--a-', values);
+    const input$ = ts.createColdObservable('--a-', values);
     const expect$ = '--b-';
 
     const mockStore = configureMockStore<RootState>();
     const store = mockStore();
-    const test$ = auth(new ActionsObservable(input$), store);
+    const test$ = twitchEpic(new ActionsObservable(input$), store);
 
-    testScheduler.expectObservable(test$).toBe(expect$, values);
+    ts.expectObservable(test$).toBe(expect$, values);
+    ts.flush();
 });
 
-test.cb('twtichEpic fails', t => {
+test('twtichEpic returns authorizeTwitch.failed', t => {
     t.plan(1);
 
-    const response = {
-        access_token: 'access_token',
-        refresh_token: 'refresh_token',
-        scope: ['scope']
-    };
+    const ts = new TestScheduler((expected, actual) => {
+        t.deepEqual(expected, actual);
+    });
+
+    const error = new OAuthAuthorizeError('twitch');
 
     OAuthAuthorize.stub = stub().withArgs('twitch')
-        .throws(Observable.throw(new OAuthAuthorizeError('twitch')));
+        .returns(Observable.throw(error));
 
-    const testScheduler = new TestScheduler((expected, actual) => {
-        t.deepEqual('hoge', actual);
-        t.end();
-    });
-    const cold = testScheduler.createColdObservable.bind(testScheduler);
-    const fetchedToken = new Token(response);
     const values = {
         a: authorizeTwitch.started(),
-        b: authorizeTwitch.failed({ error: new OAuthAuthorizeError('twitch') }),
+        b: authorizeTwitch.failed({ error }),
     };
-    const input$ = cold('--a-', values);
+    const input$ = ts.createColdObservable('--a-', values);
     const expect$ = '--b-';
 
     const mockStore = configureMockStore<RootState>();
     const store = mockStore();
-    const test$ = auth(new ActionsObservable(input$), store);
+    const test$ = twitchEpic(new ActionsObservable(input$), store);
 
-    testScheduler.expectObservable(test$).toBe(expect$, values);
+    ts.expectObservable(test$).toBe(expect$, values);
+    ts.flush();
 });

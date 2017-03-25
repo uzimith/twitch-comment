@@ -54,7 +54,7 @@
         "source-map-loader": "^0.2.0",
         "source-map-support": "^0.4.14",
         "stack-source-map": "^1.0.6",
-        "stubbable-decorator": "https://github.com/uzimith/stubbable-decorator.js#typing",
+        "stubbable-decorator": "https://github.com/uzimith/stubbable-decorator.js",
         "style-loader": "^0.13.2",
         "ts-loader": "^2.0.1",
         "ts-node": "^2.1.0",
@@ -110,7 +110,6 @@
             "dist/tests.js"
         ],
         "concurrency": 5,
-        "failFast": true,
         "failWithoutAssertions": true,
         "timeout": "5s"
     }

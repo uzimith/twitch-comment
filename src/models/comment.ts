@@ -17,7 +17,10 @@ class Comment extends Record({
     public uuid: string;
 
     constructor(params: Params) {
-        super({ ...params, uuid: uuid() });
+        if (typeof params.uuid !== 'string') {
+            params.uuid = uuid();
+        }
+        super(params);
     }
 }
 

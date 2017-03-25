@@ -23,7 +23,7 @@ export const OAuthAuthorize = stubbable(
             const oauth = electronOauth2(parameters, parameters);
             return Observable.from(oauth.getAccessToken(twitchAllScopes));
         }
-        throw new OAuthAuthorizeError(provider);
+        return Observable.throw(new OAuthAuthorizeError(provider));
     }
 );
 

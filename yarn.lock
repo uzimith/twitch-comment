@@ -6322,9 +6322,9 @@ strip-json-comments@^2.0.0, strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-"stubbable-decorator@https://github.com/uzimith/stubbable-decorator.js#typing":
-  version "1.0.1"
-  resolved "https://github.com/uzimith/stubbable-decorator.js#d20fcfe0ae7411d1a5790362b7abddba22fc3c3d"
+"stubbable-decorator@https://github.com/uzimith/stubbable-decorator.js":
+  version "2.0.0"
+  resolved "https://github.com/uzimith/stubbable-decorator.js#bbdb590010899d689cd6d660eaf0b82166c82d07"
 
 style-loader@0.13.1:
   version "0.13.1"

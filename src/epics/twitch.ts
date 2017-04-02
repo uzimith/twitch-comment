@@ -8,7 +8,7 @@ import { RootState } from 'reducers';
 import { authorizeTwitch, subsribeTwitch, publishTwitch } from 'actions';
 import { OAuthAuthorize } from 'utils/oauth';
 import Token from 'models/token';
-import { connect } from 'utils/twitch';
+import { connect, ChatResponse } from 'utils/twitch';
 
 // authorizeTwitch
 const authActionValue = returnof(authorizeTwitch.started);
@@ -35,11 +35,24 @@ export const subscribe = (
         .mergeMap(() => {
             const auth_token = store.getState().auth.access_token; // tslint:disable-line
             const user = 'uzimith';
-            const channel = 'mintosu';
+            // const channel = 'mintosu';
+            const channel = 'imaqtpie';
 
             const client = connect(user, auth_token, channel);
+            const chat = Observable.fromEvent(client, 'chat', (channel, userstate, message, self) => ({
+                channel, userstate, message, self
+            }))
+                .do(x => console.log(x))
+                .filter<ChatResponse>((response) => !response.self)
+                .map((response) => {
+                    return {
+                        channel: response.channel,
+                        username: response.userstate.username,
+                        message: response.message,
+                    };
+                })
 
-            return Observable.of(client);
+            return chat;
         })
         .map(response => publishTwitch(response))
     ;

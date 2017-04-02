@@ -1,7 +1,7 @@
 import { client } from 'tmi.js';
 
 export function connect(user: string, password: string, channel: string) {
-    const tmiClient = client({
+    const tmiClient = new client({
         options: {
             debug: true
         },
@@ -16,4 +16,22 @@ export function connect(user: string, password: string, channel: string) {
     });
     tmiClient.connect();
     return tmiClient;
+}
+
+export interface UserState {
+    badges?: any;
+    color?: any;
+    emotes?: any;
+    id: string;
+    mod: boolean;
+    subscriber: boolean;
+    turbo: boolean;
+    username: string;
+}
+
+export interface ChatResponse {
+    channel: string;
+    userstate: UserState;
+    message: string;
+    self: boolean;
 }

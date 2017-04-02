@@ -12,7 +12,7 @@ export function connect(user: string, password: string, channel: string) {
             username: user,
             password: `oauth:${password}`
         },
-        channels: [`#{channel}`]
+        channels: [`#${channel}`]
     });
     tmiClient.connect();
     return tmiClient;

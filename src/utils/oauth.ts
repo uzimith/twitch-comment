@@ -21,7 +21,9 @@ export const OAuthAuthorize = stubbable(
     (provider: string): Observable<{}> => {
         if (provider === 'twtich') {
             const oauth = electronOauth2(parameters, parameters);
-            return Observable.from(oauth.getAccessToken(scopes));
+            return Observable.from(oauth.getAccessToken({
+                scope: scopes.join(' '),
+            }));
         }
         return Observable.throw(new OAuthAuthorizeError(provider));
     }

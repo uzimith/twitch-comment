@@ -14,25 +14,25 @@ export const authWindowOptions = {
     autoHideMenuBar: true,
 };
 
-export const twitchScopes = {
-    scope: ['chat_login', 'channel_read', 'user_read'],
-};
+export const twitchScopes = [
+    'chat_login',
+    'channel_read',
+    'user_read',
+];
 
-export const twitchAllScopes = {
-    scope: [
-        'user_read',
-        'user_blocks_edit ',
-        'user_blocks_read',
-        'user_follows_edit',
-        'channel_read',
-        'channel_editor',
-        'channel_commercial',
-        'channel_stream',
-        'channel_subscriptions',
-        'user_subscriptions',
-        'channel_check_subscription',
-        'chat_login',
-        'channel_feed_read',
-        'channel_feed_edit',
-    ],
-};
+export const twitchAllScopes = [
+    'user_read',
+    'user_blocks_edit ',
+    'user_blocks_read',
+    'user_follows_edit',
+    'channel_read',
+    'channel_editor',
+    'channel_commercial',
+    'channel_stream',
+    'channel_subscriptions',
+    'user_subscriptions',
+    'channel_check_subscription',
+    'chat_login',
+    'channel_feed_read',
+    'channel_feed_edit',
+];

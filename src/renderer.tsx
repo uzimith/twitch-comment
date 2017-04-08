@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createEpicMiddleware } from 'redux-observable';
 import createHistory from 'history/createHashHistory';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
+import { notifyMiddleware } from 'middlewares/notify';
 import { rootEpic } from 'epics';
 import { rootReducer } from 'reducers';
 import App from 'components/App';
@@ -18,7 +19,7 @@ const epicMiddleware = createEpicMiddleware<any, any>(rootEpic);
 // store
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(
-    applyMiddleware(historyMiddleware, epicMiddleware),
+    applyMiddleware(historyMiddleware, epicMiddleware, notifyMiddleware),
 ));
 
 ReactDOM.render(

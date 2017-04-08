@@ -38,19 +38,12 @@ export const subscribe = (
             // const channel = 'mintosu';
             const channel = 'imaqtpie';
 
+            // TODO: utilsに移動する
             const client = connect(user, auth_token, channel);
             const chat = Observable.fromEvent(client, 'chat', (channel, userstate, message, self) => ({
                 channel, userstate, message, self
             }))
-                .do(x => console.log(x))
                 .filter<ChatResponse>((response) => !response.self)
-                .map((response) => {
-                    return {
-                        channel: response.channel,
-                        username: response.userstate.username,
-                        message: response.message,
-                    };
-                })
 
             return chat;
         })

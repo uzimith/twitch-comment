@@ -21,8 +21,8 @@ export interface Params {
     language?: string;
     _id?: number;
     name?: string;
-    created_at?: Date;
-    updated_at?: Date;
+    created_at?: Date | string;
+    updated_at?: Date | string;
     delay?: any;
     logo?: string;
     banner?: any;
@@ -38,6 +38,12 @@ export interface Params {
 }
 
 class Channel extends Record({
+    status: "",
+    game: "",
+    name: "",
+    display_name: "",
+    logo: "",
+    views: null,
 }) {
     public mature: boolean;
     public status: string;

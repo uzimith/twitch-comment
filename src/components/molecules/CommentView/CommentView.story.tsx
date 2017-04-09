@@ -3,7 +3,7 @@ import { storiesOf, action } from '@kadira/storybook';
 import centered from '@kadira/react-storybook-decorator-centered';
 import * as faker from 'faker';
 
-import { CommentView } from 'components/molecules/CommentView';
+import CommentView from 'components/molecules/CommentView';
 import Comment from 'models/comment';
 
 const comment = new Comment({
